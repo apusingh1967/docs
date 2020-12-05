@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 def grad_desc(x, y):
     m_curr = b_curr = 0
     iters = 500000
@@ -9,15 +10,15 @@ def grad_desc(x, y):
 
     for i in range(iters):
         y_pred = b_curr + m_curr * x
-        cost = (1/n) * sum([val ** 2 for val in (y - y_pred)])
-        md = (-2/n) * sum(x * (y - y_pred))
-        bd = (-2/n) * sum(y - y_pred)
+        cost = (1 / n) * sum([val ** 2 for val in (y - y_pred)])
+        md = (-2 / n) * sum(x * (y - y_pred))
+        bd = (-2 / n) * sum(y - y_pred)
         m_curr = m_curr - lr * md
         b_curr = b_curr - lr * bd
 
     print("m {}, b {}, cost {}".format(m_curr, b_curr, cost))
 
-    plt.style.use('seaborn-whitegrid')
+    plt.style.use("seaborn-whitegrid")
 
     fig = plt.figure()
     ax = plt.axes()
