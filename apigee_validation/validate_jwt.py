@@ -1,0 +1,18 @@
+import jwt
+
+keyjson = """{
+    "kty": "RSA",
+    "n": "1nUR3oWTTjoFW_T2RvQVQTSM6MYXxiMDdGrgiD-hnDo24qFoP3Zx4deuscZ4-5Cx2k5RjLUAxyLx50YKSLmoQmt9uGCYEMEu2GYUP32Jvql-Zu5Dnq-wMjVaWH2mQq1j0cBADkUbz6Wh-WmUnWIpuGz5HBvK5YgAWSZzfQMvjpp_GDhaR2uWgtRyt3j9ZEKNtsUqd6TY3vwWLZn_MpE4tNR7VE5tz4zzebzyGr5KX5Qvh6T4DMN_jRTdfQSJKFGP41P1yco0KDEX4E6CzmR2pENyMwP9FlvwaVKTyOUnrRlWmxklbqVYO-kfrTUpLxziVQKR8O4e5a-8rvWgRkgnUQ",
+    "e": "AQAB",
+    "kid": "1",
+    "alg": "RS256",
+    "use": "sig"
+}"""
+
+key = jwt.algorithms.RSAAlgorithm.from_jwk(keyjson)
+
+token = \
+  "eyJraWQiOiIxIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJhY2Nlc3NfdG9rZW4iOiJQNG0yVUtrMHZLaHdhR1ZKYTVTUXBxNThDbEFIIiwiYXVkaWVuY2UiOiJtaWNyb2dhdGV3YXkiLCJhcGlfcHJvZHVjdF9saXN0IjpbImMzNjAtYmFuay1jYS1kZXYiXSwiYXBwbGljYXRpb25fbmFtZSI6Im1hbnVsaWZlLWMzNjAtY2EtYmFuay1kZXYiLCJuYmYiOjE2MDc1MzM1NTksImlzcyI6Imh0dHA6XC9cL21hbnVsaWZlLWRldmVsb3BtZW50LWRldi5hcGlnZWUubmV0XC92MVwvbWdcL29hdXRoMlwvdG9rZW4iLCJzY29wZXMiOlsiYzM2MDppZG1hcHBpbmc6YmFuazpyZWFkIiwiYzM2MDppZG1hcHBpbmc6YmFuazp3cml0ZSJdLCJleHAiOjE2MDc1MzM5MTksImlhdCI6MTYwNzUzMzYxOSwiY2xpZW50X2lkIjoiMU5IOHVoMG90cG5maTQ5eFBIcUtvY0h5UmdIMW44bDIiLCJqdGkiOiJjNzBhMjFhOC05Y2NhLTQ1YWMtODVlYS1iYWYwYmM2YjcxZmMifQ.W8z42ttsjeh2bLC2NGmGQmLqJMGQ7J2WEBkeZi9Q3lAklon3Cna95OrBFZsYQYBttNeSDqRQJ6cnxBQ8AF9GI9005vTi2Z4oGikI6Oszd2eNzn5mHbqYn04rUNKVxqXQaaQQZ4sBuOlkpQ0v388b93qpT2l7s12nmuNaANM8KgudiPikw1pQSyUbTjms9iOnMBVGwNFeInY9_qS4ajDauqX03wgLZJi7IA-VhAlGSATE69EYVbbiDH_Nq4jj3t5bpTHxRKMln3oeJ7ri8wYEmZ1aUOb4CoM0tSrJNs6PazvJk_A-g1ZucDpltrNKQCPMjXDHNVDK2fOA7W-f2JYd1A"
+payload = jwt.decode(token, key=key, algorithms=['RS256'])
+
+print(payload)
